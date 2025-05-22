@@ -19,11 +19,15 @@ from django.urls import path, include
 from . import views
 from django.conf.urls.static import static
 from django.conf import settings
+# from store import views as store_views
+# from carts import views as cart_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home, name='home'),
     path('store/', include('store.urls')),
+    path('cart/', include('carts.urls')),
+    # path('product_detail/', views.shopdetail, name'shopdetail'),
     path('<slug:category_slug>/', views.home, name='home_products_by_category'),
     
 ]  + static(settings.MEDIA_URL, document_root =settings.MEDIA_ROOT)
